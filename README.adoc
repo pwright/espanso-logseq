@@ -1,0 +1,21 @@
+# Espanso logseq
+
+Improve your logseq experience using this snippets triggers.
+
+## Triggers
+
+bquery.::
++
+block query template
+----
+#+BEGIN_QUERY
+{:title [:h2 "title"]
+ :query [:find (pull ?b [*])
+         :where
+         [?b :block/properties ?p]
+         [(get ?p :type) ?t]
+         [(= "column" ?t)]]}
+#+END_QUERY
+
+----
+

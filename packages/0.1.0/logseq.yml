@@ -1,0 +1,30 @@
+# espanso configuration file
+
+# This is the default configuration file, change it as you like it
+# You can refer to the official documentation:
+# https://espanso.org/docs/
+
+# Matches are the substitution rules, when you type the "trigger" string
+# it gets replaced by the "replace" string.
+name: logseq
+parent: default
+
+matches:
+
+  ### ----------------
+  ### Queries
+  ### ----------------
+
+  # block query
+  - trigger: "bquery."
+    replace: |
+              #+BEGIN_QUERY
+              {:title [:h2 "title"]
+              :query [:find (pull ?b [*])
+                      :where
+                      [?b :block/properties ?p]
+                      [(get ?p :type) ?t]
+                      [(= "column" ?t)]]}
+              #+END_QUERY
+
+
